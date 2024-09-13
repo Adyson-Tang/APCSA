@@ -8,7 +8,7 @@ public class Math{
         System.out.println ("*** Celsius to Fahrenheit ***");
         System.out.print ("Enter a temperature in Celsius");
         double CelciusInput = input.nextDouble();
-        System.out.print (CelciusInput + " Celsius = " + ((CelciusInput * 9/5) + 32) + " Fahrenheit ");
+        System.out.println (CelciusInput + " Celsius = " + ((CelciusInput * 9/5) + 32) + " Fahrenheit ");
         //remember how integers work
 
         System.out.println (" ");
@@ -29,6 +29,7 @@ public class Math{
         
         System.out.println ("");
         
+        System.out.println ("*** Receipt Generator ***");
         System.out.print ("Enter the number of units you're buying: ");
         double UnitsInput = input.nextDouble();
         System.out.print ("Enter the price per unit: ");
