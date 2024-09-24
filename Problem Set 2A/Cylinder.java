@@ -2,25 +2,32 @@
 
 public class Cylinder {
     double height;
-    Circle base;
+    Circle base = new Circle ();
     
     Cylinder () {
         //default constructor
         height = 1;
-        base = new Circle(1);
+        Circle base = new Circle(1);
     }
-    
+    Cylinder (double r, double h) {
+        Circle base = new Circle(r);
+        height = h;
+        
+    }
     //behavior methods
     public String toString () {
         return base + " and a height of " + height;
     }
     public double getRadius () {
-          //  return ;
+        return base.getRadius();
     }
     public double getHeight () {
         return height;
     }
     public double surfaceArea () {
-        return 
+        return height * base.circumference() + 2 * base.area(); 
+    }
+    public double volume (){
+        return base.area() * height;
     }
 }
