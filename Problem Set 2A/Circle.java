@@ -21,9 +21,9 @@ public class Circle {
             return radius;
         }
         public double circumference () {
-            return radius * 2 * 3.14159;
+            return radius * 2 * 3.1415926535;
         }
         public double area () {
-            return 3.14156 * radius * radius;
+            return 3.1415926535 * radius * radius;
         }
     }
