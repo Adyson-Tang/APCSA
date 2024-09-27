@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Formulas
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Formulas\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=A\ B
+comment1.target=double\ findSlope(OrderedPairs,\ OrderedPairs)
+comment1.text=\ public\ OrderedPairs\ findQuadraticRoots\ (double\ a,\ double\ b,\ double\ c)\ {\r\n\ \ \ \ \ \ \ \ x\ \=\ -b\ \r\n\ \ \ \ \ \ \ \ return\ new\ OrderedPairs\r\n\ \ \ \ }\r\n\ \ \ \ \r\n
+comment2.params=A\ B
+comment2.target=OrderedPairs\ findMidpoint(OrderedPairs,\ OrderedPairs)
+comment3.params=a\ d\ k
+comment3.target=double\ findArithmeticSeriesSum(double,\ double,\ int)
+comment4.params=a\ r\ k
+comment4.target=double\ findgeometricSeriesSum(double,\ double,\ int)
+numComments=5
