@@ -6,12 +6,11 @@
  * @version (a version number or a date)
  */
 public class Formulas {
-    /* public OrderedPairs findQuadraticRoots (double a, double b, double c) {
-        x = -b 
-        return new OrderedPairs
+    public OrderedPairs findQuadraticRoots (double a, double b, double c) {
+        double x = (-b + Math.sqrt(b*b-4*a*c))/(2*a);
+        double y = (-b - Math.sqrt(b*b-4*a*c))/(2*a);
+        return new OrderedPairs (x, y);
     }
-    
-    */
     
     //slope
     public double findSlope (OrderedPairs A, OrderedPairs B) {
@@ -33,12 +32,19 @@ public class Formulas {
         //return x2*(d * x + x1);
         return x/2 * (2*a + d *(x - 1));
     }
-    //make a double
+    //make a double but is there a way to do it cleaner?
     
     //geo
     public double findgeometricSeriesSum (double a, double r, int k) {
         double x = Math.pow(r, k);
         return a*((1-x)/(1-r));
     }
+    
+    //die
+    public int rollDie (int sides) {
+        return (int) (Math.random() * sides ) + 1;
+    }
+    
+    
     
 }

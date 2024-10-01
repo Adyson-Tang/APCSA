@@ -1,22 +1,22 @@
 #BlueJ package file
-dependency1.from=Driver
+dependency1.from=Formulas
 dependency1.to=OrderedPairs
 dependency1.type=UsesDependency
 dependency2.from=Driver
 dependency2.to=Formulas
 dependency2.type=UsesDependency
-dependency3.from=Formulas
+dependency3.from=Driver
 dependency3.to=OrderedPairs
 dependency3.type=UsesDependency
 editor.fx.0.height=832
 editor.fx.0.width=707
 editor.fx.0.x=736
 editor.fx.0.y=7
-objectbench.height=110
+objectbench.height=127
 objectbench.width=359
 package.divider.horizontal=0.6
-package.divider.vertical=0.7200956937799043
-package.editor.height=281
+package.divider.vertical=0.6794258373205742
+package.editor.height=264
 package.editor.width=256
 package.editor.x=987
 package.editor.y=142
