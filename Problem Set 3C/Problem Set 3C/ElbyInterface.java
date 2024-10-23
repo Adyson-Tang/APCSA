@@ -15,6 +15,8 @@ public class ElbyInterface {
         System.out.println(elby.getGreeting());
         Scanner in = new Scanner(System.in);
         String statement = in.nextLine();
+        boolean test = true;
+        if (!test) { System.out.println("hi"); }
 
         while (!(statement.equals("Bye") || statement.equals("bye"))) {
             System.out.println(elby.getResponse(statement));

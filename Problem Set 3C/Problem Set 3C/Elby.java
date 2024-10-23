@@ -25,13 +25,13 @@ public class Elby {
             response = "Tell me more about your family.";
         } 
         //you and me
-        else if (statement.indexOf ("you") >= 0
+        else if (findKeyword(statement, "you", 0) != -1
         && statement.indexOf ("me") >= statement.indexOf ("you") + 3) {
             response = transformYouMeStatement(statement);
         }
         //I smth you
-        else if (findKeyword(statement, "I", 0) !=1
-        && statement.indexOf ("you") > statement.indexOf ("I") + 1) {
+        else if (findKeyword(statement, "I", 0) != -1
+        && statement.indexOf ("you") >= statement.indexOf ("I") + 1) {
             response = transformIMeStatement(statement);
         }
         //I want to
@@ -183,6 +183,29 @@ public class Elby {
         String restOfStatement = statement.substring(posOfYou + 3, posOfMe).trim();
         return "What makes you think that I " + restOfStatement + " you?";
     }
+        /**
+     * Take a statement with "I <something> you" and transform it into
+     * "Why do you <something> me?"
+     *
+     * @param statement the user statement, assumed to contain "I" followed by
+     *     something "you"
+     * @return the transformed statement
+     */
+    public String transformIMeStatement(String statement) {
+        // ADD CODE HERE
+        //Remove the final period, if there is one
+        statement = statement.trim();
+        String lastChar = statement.substring(statement.length() - 1);
+        if (lastChar.equals(".")) {
+            statement = statement.substring(0, statement.length() - 1);
+        }
+
+        int posOfI = findKeyword(statement, "I", 0);
+        int posOfYou  = findKeyword(statement, "you",  posOfI + 1);
+
+        String restOfStatement = statement.substring(posOfI + 1, posOfYou).trim();
+        return "Why do you " + restOfStatement + " me?";
+    }
 
     /**
      * Take a statement with "I want to <something>." and transform it into "What
@@ -222,29 +245,4 @@ public class Elby {
         String restOfStatement = statement.substring(pos + 6).trim();
         return "Would you really be happy if you had " + restOfStatement + "?";
     }
-
-    /**
-     * Take a statement with "I <something> you" and transform it into
-     * "Why do you <something> me?"
-     *
-     * @param statement the user statement, assumed to contain "I" followed by
-     * 	something "you"
-     * @return the transformed statement
-     */
-    public String transformIMeStatement(String statement) {
-        // ADD CODE HERE
-        //Remove the final period, if there is one
-        statement = statement.trim();
-        String lastChar = statement.substring(statement.length() - 1);
-        if (lastChar.equals(".")) {
-            statement = statement.substring(0, statement.length() - 1);
-        }
-
-        int posOfYou = findKeyword(statement, "you", 0);
-        int posOfI  = findKeyword(statement, "I",  posOfYou + 1);
-
-        String restOfStatement = statement.substring(posOfI + 3, posOfYou).trim();
-        return "Why do you " + restOfStatement + " me?";
-    }
-
 }
