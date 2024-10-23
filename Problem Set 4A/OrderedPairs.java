@@ -24,11 +24,11 @@ public class OrderedPairs {
         return Open + x + Comma + y + Close;
     }
     
-    public double getX () {
+    public double X () {
         return x;
     }
     
-    public double getY () {
+    public double Y () {
         return y;
     }
 }

@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Formulas
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ MidpointFinder\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=A\ B
+comment1.target=OrderedPairs\ findMidpoint(OrderedPairs,\ OrderedPairs)
+numComments=2
