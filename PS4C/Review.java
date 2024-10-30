@@ -167,6 +167,7 @@ public class Review {
         while (text.length() > 0) {
             while (text.indexOf(" ") > 0) {
                 word = text.substring(0, text.indexOf(" "));
+                word = removePunctuation(word);
                 n += Review.sentimentVal(word);
                 text = text.substring(text.indexOf(" ") + 1, text.length());
             }
@@ -181,31 +182,37 @@ public class Review {
     }
         
     public static int starRating(String fileName) {
+        double totalSentiment = totalSentiment(fileName);
         int a = 0;
-        if (Review.totalSentiment(fileName) < -15) {
+        if (totalSentiment < -20) {
             a = 0;
-        }
-        /*
-        int n = 0;
-        int a = 0;
-        String text = Review.textToString(fileName);
+        } else if (totalSentiment < -10) {
+            a = 1;
+        } else if (totalSentiment < -5) {
+            a = 2;
+        } else if (totalSentiment < 0) {
+            a = 3;
+        } else if (totalSentiment < 5) {
+            a = 4;
+        } else a = 5;
+        return a;
+    }
+    
+    public static String fakeReview (String fileName) {
+        String finalString = "";
+        String text = textToString(fileName);
         String word = "";
-        while (text.length() > 0) {
-            while (text.indexOf(" ") > 0) {
-                word = text.substring(0, text.indexOf(" "));
-                n += Review.sentimentVal(word);
-                text = text.substring(text.indexOf(" ") + 1, text.length());
-                a ++;
+        while (text.indexOf("*") != -1) {
+            word = text.substring(0, text.indexOf(" ") + 1);
+            if (word.indexOf("*") == 0) {
+              word = randomAdjective() + " ";
             }
-            if (text.indexOf(" ") == -1) {
-                break;
-            }
+            finalString = finalString + word;
+            text = text.substring(text.indexOf(" ") + 1, text.length());
         }
         word = text.substring(0, text.length());
-        word = Review.removePunctuation(word);
-        n += Review.sentimentVal(word);
-        a ++;
-        */
-        return a;
+        word = removePunctuation(word);
+        finalString = finalString + word;
+        return finalString;
     }
 }
