@@ -8,11 +8,13 @@
 public class Driver { 
     public static void main (String[] args) {
         //dont have to create new
-       //double n = sentimentVal("hi");
-       //String word = sentimentVal(0.5);
-         System.out.println(Review.totalSentiment("SimpleReview.txt"));
-         System.out.println(Review.starRating("SimpleReview.txt") + " stars");
-         System.out.println(Review.fakeReview("SimpleReview.txt"));;
-}
+        //double n = sentimentVal("hi");
+        //String word = sentimentVal(0.5);
+        //System.out.println(Review.sentimentVal(0.2));
+        System.out.println(Review.totalSentiment("SimpleReview.txt"));
+        System.out.println(Review.starRating("SimpleReview.txt") + " stars");
+        System.out.println(Review.fakeReview("SimpleReview.txt"));
+        System.out.println(Review.test("Hilo"));
+    }
     // instance variables - replace the example below with your own
 }

@@ -180,7 +180,7 @@ public class Review {
         n += Review.sentimentVal(word);
         return n;
     }
-        
+
     public static int starRating(String fileName) {
         double totalSentiment = totalSentiment(fileName);
         int a = 0;
@@ -197,22 +197,36 @@ public class Review {
         } else a = 5;
         return a;
     }
-    
+
     public static String fakeReview (String fileName) {
         String finalString = "";
         String text = textToString(fileName);
         String word = "";
         while (text.indexOf("*") != -1) {
-            word = text.substring(0, text.indexOf(" ") + 1);
+            word = text.substring(0, text.indexOf(" "));
+            String punc = getPunctuation(word);
+            // word = removePunctuation(word);
             if (word.indexOf("*") == 0) {
-              word = randomAdjective() + " ";
+                //word = word.substring(1);
+                if (totalSentiment(fileName) > 0) {
+                    word = randomPositiveAdj();
+                }
+                if (totalSentiment(fileName) < 0) {
+                    word = randomNegativeAdj();
+                }
             }
+            if (punc.equals("")) {
+                word = word + " ";
+            } else word =  word + punc + " ";
             finalString = finalString + word;
             text = text.substring(text.indexOf(" ") + 1, text.length());
         }
         word = text.substring(0, text.length());
-        word = removePunctuation(word);
         finalString = finalString + word;
         return finalString;
+    }
+
+    public static String test (String test) {
+        return test.substring(1);
     }
 }
