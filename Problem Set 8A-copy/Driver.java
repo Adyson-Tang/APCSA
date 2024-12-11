@@ -12,23 +12,51 @@ public class Driver{
         int i = 0;
         
         System.out.println("");
-        System.out.println(TicTacToe.player(p) + ", make your move (row,col):");
         System.out.println(TicTacToe.emptyGrid());
+        System.out.println(TicTacToe.player(p) + ", make your move (row,col):");
         
         ArrayList <Integer> row = new ArrayList();
+        ArrayList <Integer> column = new ArrayList();
+        ArrayList <String> player = new ArrayList();
         
-        
+        int a = p;
         while (!(answer.equals("no") || answer.equals("No"))) {
             answer.add(input.nextLine());
-            System.out.println(TicTacToe.grid(answer.get(i), p));
-            if (TicTacToe.getRow(answer.get(i), p) < 3 && TicTacToe.getRow(answer.get(i), p) >= 0 && TicTacToe.getColumn(answer.get(i), p) < 3 && TicTacToe.getColumn(answer.get(i), p) >= 0) {
-                    p++;
-                    i++;
-                    row.add(TicTacToe.getRow(answer.get(i), p));
+            a = p-1;
+            if (TicTacToe.getRow(answer.get(i)) < 3 && TicTacToe.getRow(answer.get(i)) >= 0 && TicTacToe.getColumn(answer.get(i)) < 3 && TicTacToe.getColumn(answer.get(i)) >= 0) {
+                row.add(p,TicTacToe.getRow(answer.get(i)));
+                column.add(p,TicTacToe.getColumn(answer.get(i)));
+                player.add(p, TicTacToe.player(p));
+                p++;
+            }
+            while (a >= 0) {
+                    if (TicTacToe.getRow(answer.get(i)) == row.get(a) && TicTacToe.getColumn(answer.get(i)) == column.get(a)) {
+                        row.remove(p-1);
+                        column.remove(p-1);
+                        player.add(p, TicTacToe.player(p -1));
+                        p--;
+                        System.out.println("That spot has been taken, please try again");
+                    }
+                    a--;
                 }
-                
-            //if (
-            System.out.print(TicTacToe.player(p) + ", make your move (row,col):");
+            System.out.println("Round " + p);
+            //System.out.println(TicTacToe.grid(p, row, column, player));
+            if (!TicTacToe.grid(p,row,column,player).equals("")) {
+                System.out.println("Player" + TicTacToe.player(p-1) + " WINS!");
+                while (p > 0) {
+                    row.remove(p - 1);
+                    column.remove(p - 1);
+                    player.remove(p - 1);
+                    p--;
+                }
+                System.out.println("Would you like to play again?");
+                while (!input.nextLine().equals("Yes") ||!input.nextLine().equals("yes") || !input.nextLine().equals("No") || !input.nextLine().equals("no")) {
+                    System.out.println("Would you like to play again?");
+                }
+            } else {
+                System.out.print(TicTacToe.player(p) + ", make your move (row,col):");                  
+            }
+            i++;
         }
     }
 }

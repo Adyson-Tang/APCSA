@@ -20,42 +20,66 @@ public class TicTacToe  {
         //System.out.println(GRID);
         return GRID;
         }
-    public static String grid (String move, int p) {
+    public static String grid (int p, ArrayList <Integer> row, ArrayList <Integer> column, ArrayList <String> player) {
         String [] [] grid = new String [3] [3];
         String GRID = "";
+        int a = row.size() -1 ;
         for (int i  = 0; i < grid.length; i++) {
             for (int e = 0; e < grid[0].length; e++) { 
                 grid [i] [e] = "[ ]";
-                if (getRow(move, p) < 3 && getRow(move, p) >= 0 && getColumn(move, p) < 3 && getColumn(move, p) >= 0) {
-                    grid [getRow(move, p)] [getColumn(move, p)] = "[" + player(p) + "]";
+                while (a >= 0) {
+                    grid [row.get(a)] [column.get(a)] = "[" + player.get(a) + "]";
+                    a--;
                 }
+                a = row.size() - 1;
                 System.out.print(grid[i][e]);
             }
             System.out.println();
         }
+        if (!grid [0] [0].equals("[ ]") && grid [0] [0].equals(grid [0] [1]) && grid [0] [1].equals(grid [0] [2])) {
+                    GRID += player(p-1) + "WIN";
+                }
+        if (!grid [1] [0].equals("[ ]") && grid [1] [0].equals(grid [1] [1]) && grid [1] [1].equals(grid [1] [2])) {
+                    GRID += player(p-1) + "WIN";
+                }
+        if (!grid [2] [0].equals("[ ]") && grid [2] [0].equals(grid [2] [1]) && grid [2] [1].equals(grid [2] [2])) {
+                    GRID += player(p-1) + "WIN";
+                }
+        if (!grid [0] [0].equals("[ ]") && grid [0] [0].equals(grid [1] [0]) && grid [1] [0].equals(grid [2] [0])) {
+                    GRID += player(p-1) + "WIN";
+                }
+        if (!grid [0] [1].equals("[ ]") && grid [0] [1].equals(grid [1] [1]) && grid [1] [1].equals(grid [2] [1])) {
+                    GRID += player(p-1) + "WIN";
+                }
+        if (!grid [0] [2].equals("[ ]") && grid [0] [2].equals(grid [1] [2]) && grid [1] [2].equals(grid [2] [2])) {
+                    GRID += player(p-1) + "WIN";
+                }
+        if (!grid [0] [0].equals("[ ]") && grid [0] [0].equals(grid [1] [1]) && grid [1] [1].equals(grid [2] [2])) {
+                    GRID += player(p-1) + "WIN";
+                }
+        if (!grid [2] [0].equals("[ ]") && grid [2] [0].equals(grid [1] [1]) && grid [1] [1].equals(grid [0] [2])) {
+                    GRID += player(p-1) + "WIN";
+                }
         //System.out.println(GRID);
         return GRID;
-        }
-    public static int getRow (String input, int move) {
+    }
+    public static int getRow (String input) {
         int y;
-        ArrayList <Integer> row = new ArrayList();
         input = input.substring(0, 1);
         y = Integer.parseInt(input);
-        if (y < 3 && y >= 0) {
-            row.add(y);
+        if (!(y < 3 && y >= 0)) {
+            System.out.println("Please enter a value within range");
         }
-        return row.get(move);
+        return y;
     }
-    public static int getColumn (String input, int move) {
+    public static int getColumn (String input) {
         int x;
-        ArrayList <Integer> column = new ArrayList();
-        
         input = input.substring(2, 3);
         x = Integer.parseInt(input);
-        if (x < 3 && x >= 0) {
-          column.add(x);  
+        if (!(x < 3 && x >= 0)) {
+            System.out.println("Please enter a value within range");
         }
-        return column.get(move);
+        return x;
     }
     public static String player(int p) {
         if (p%2 == 0) return "X";
@@ -70,5 +94,15 @@ public class TicTacToe  {
         }
         //if (answer.get(i)
         return true;
+    }
+    public static boolean win (ArrayList <Integer> row, ArrayList <Integer> column) {
+        for (int b = 0; b < 3; b++) {
+                for (int c = 0; c < 3; c++) {
+                   if (row.get(c) == 0) {
+                                               
+                   }
+                }
+            }
+            return true;
     }
 }
