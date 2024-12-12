@@ -10,6 +10,7 @@ public class Driver{
         
         int p = 0;
         int i = 0;
+        String yn = "";
         
         System.out.println("");
         System.out.println(TicTacToe.emptyGrid());
@@ -49,13 +50,27 @@ public class Driver{
                     player.remove(p - 1);
                     p--;
                 }
+                p = 0;
                 System.out.println("Would you like to play again?");
-                while (!input.nextLine().equals("Yes") ||!input.nextLine().equals("yes") || !input.nextLine().equals("No") || !input.nextLine().equals("no")) {
+                yn = input.nextLine();
+                
+                while (!yn.equals("Yes") && !yn.equals("yes") && !yn.equals("No") && !yn.equals("no")) {
                     System.out.println("Would you like to play again?");
-                }
-            } else {
+                    if (yn.equals("No") || yn.equals("no")) {
+                      break;  
+                    }
+                } 
+            }else {
                 System.out.print(TicTacToe.player(p) + ", make your move (row,col):");                  
             }
+            if (yn.equals("No") || yn.equals("no")) {
+                      break;  
+                    }
+            if (yn.equals("Yes") || yn.equals("yes")) {
+                        System.out.println("");
+                        System.out.println(TicTacToe.emptyGrid());
+                        System.out.println(TicTacToe.player(p) + ", make your move (row,col):");
+                    }
             i++;
         }
     }

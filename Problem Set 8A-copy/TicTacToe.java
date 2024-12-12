@@ -36,6 +36,7 @@ public class TicTacToe  {
             }
             System.out.println();
         }
+        System.out.println();
         if (!grid [0] [0].equals("[ ]") && grid [0] [0].equals(grid [0] [1]) && grid [0] [1].equals(grid [0] [2])) {
                     GRID += player(p-1) + "WIN";
                 }
