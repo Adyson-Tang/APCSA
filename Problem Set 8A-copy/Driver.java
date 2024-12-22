@@ -14,7 +14,7 @@ public class Driver{
         
         System.out.println("");
         System.out.println(TicTacToe.emptyGrid());
-        System.out.println(TicTacToe.player(p) + ", make your move (row,col):");
+        System.out.print(TicTacToe.player(p) + ", make your move (row,col):");
         
         ArrayList <Integer> row = new ArrayList();
         ArrayList <Integer> column = new ArrayList();
@@ -41,16 +41,27 @@ public class Driver{
                     a--;
                 }
             System.out.println("Round " + p);
-            //System.out.println(TicTacToe.grid(p, row, column, player));
-            if (!TicTacToe.grid(p,row,column,player).equals("")) {
-                System.out.println("Player" + TicTacToe.player(p-1) + " WINS!");
-                while (p > 0) {
-                    row.remove(p - 1);
-                    column.remove(p - 1);
-                    player.remove(p - 1);
-                    p--;
+            for (int o = 0; o < 3; o++) {
+                for (int e = 0; e < 3; e++) { 
+                    System.out.print(TicTacToe.grid(p,row,column,player)[o][e]);
                 }
-                p = 0;
+                System.out.println();
+            }
+            //System.out.println(TicTacToe.grid(p, row, column, player));
+            if (TicTacToe.full(TicTacToe.grid(p,row,column,player)) || TicTacToe.win(TicTacToe.grid(p,row,column,player))) {
+                if (TicTacToe.win(TicTacToe.grid(p,row,column,player))) {
+                    System.out.println("Player" + TicTacToe.player(p-1) + " WINS!");
+                } 
+                if (TicTacToe.full(TicTacToe.grid(p,row,column,player)) && !TicTacToe.win(TicTacToe.grid(p,row,column,player))) {
+                    System.out.println("TIE");
+                }
+                    row = new ArrayList();
+                    column = new ArrayList();
+                    player= new ArrayList();
+                    answer = new ArrayList <String> ();
+                    i = -1;
+                    p = 0;
+                    a = 0;
                 System.out.println("Would you like to play again?");
                 yn = input.nextLine();
                 
@@ -67,9 +78,7 @@ public class Driver{
                       break;  
                     }
             if (yn.equals("Yes") || yn.equals("yes")) {
-                        System.out.println("");
-                        System.out.println(TicTacToe.emptyGrid());
-                        System.out.println(TicTacToe.player(p) + ", make your move (row,col):");
+                        System.out.println(TicTacToe.player(p) + ", make your move (row,col):"); 
                     }
             i++;
         }

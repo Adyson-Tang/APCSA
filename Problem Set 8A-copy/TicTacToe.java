@@ -19,11 +19,12 @@ public class TicTacToe  {
         }
         //System.out.println(GRID);
         return GRID;
-        }
-    public static String grid (int p, ArrayList <Integer> row, ArrayList <Integer> column, ArrayList <String> player) {
+    }
+    public static String [] [] grid (int p, ArrayList <Integer> row, ArrayList <Integer> column, ArrayList <String> player) {
         String [] [] grid = new String [3] [3];
         String GRID = "";
         int a = row.size() -1 ;
+        boolean full = false;
         for (int i  = 0; i < grid.length; i++) {
             for (int e = 0; e < grid[0].length; e++) { 
                 grid [i] [e] = "[ ]";
@@ -32,37 +33,51 @@ public class TicTacToe  {
                     a--;
                 }
                 a = row.size() - 1;
-                System.out.print(grid[i][e]);
             }
-            System.out.println();
-        }
-        System.out.println();
-        if (!grid [0] [0].equals("[ ]") && grid [0] [0].equals(grid [0] [1]) && grid [0] [1].equals(grid [0] [2])) {
-                    GRID += player(p-1) + "WIN";
-                }
-        if (!grid [1] [0].equals("[ ]") && grid [1] [0].equals(grid [1] [1]) && grid [1] [1].equals(grid [1] [2])) {
-                    GRID += player(p-1) + "WIN";
-                }
-        if (!grid [2] [0].equals("[ ]") && grid [2] [0].equals(grid [2] [1]) && grid [2] [1].equals(grid [2] [2])) {
-                    GRID += player(p-1) + "WIN";
-                }
-        if (!grid [0] [0].equals("[ ]") && grid [0] [0].equals(grid [1] [0]) && grid [1] [0].equals(grid [2] [0])) {
-                    GRID += player(p-1) + "WIN";
-                }
-        if (!grid [0] [1].equals("[ ]") && grid [0] [1].equals(grid [1] [1]) && grid [1] [1].equals(grid [2] [1])) {
-                    GRID += player(p-1) + "WIN";
-                }
-        if (!grid [0] [2].equals("[ ]") && grid [0] [2].equals(grid [1] [2]) && grid [1] [2].equals(grid [2] [2])) {
-                    GRID += player(p-1) + "WIN";
-                }
-        if (!grid [0] [0].equals("[ ]") && grid [0] [0].equals(grid [1] [1]) && grid [1] [1].equals(grid [2] [2])) {
-                    GRID += player(p-1) + "WIN";
-                }
-        if (!grid [2] [0].equals("[ ]") && grid [2] [0].equals(grid [1] [1]) && grid [1] [1].equals(grid [0] [2])) {
-                    GRID += player(p-1) + "WIN";
-                }
+        }     
         //System.out.println(GRID);
-        return GRID;
+        return grid;
+    }
+    public static String gridprint (String [] [] g) {
+        
+        return"";
+    }
+    public static boolean full (String [] [] g) {
+        for (int i  = 0; i < 3; i++) {
+            for (int e = 0; e < 3; e++) { 
+                if (g[i][e].equals("[ ]")) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    public static boolean win (String [] [] g ) {
+        if (!g [0] [0].equals("[ ]") && g [0] [0].equals(g [0] [1]) && g [0] [1].equals(g [0] [2])) {
+                    return true;
+                }
+        if (!g [1] [0].equals("[ ]") && g [1] [0].equals(g [1] [1]) && g [1] [1].equals(g [1] [2])) {
+                    return true;
+                }
+        if (!g [2] [0].equals("[ ]") && g [2] [0].equals(g [2] [1]) && g [2] [1].equals(g [2] [2])) {
+                    return true;
+                }
+        if (!g [0] [0].equals("[ ]") && g [0] [0].equals(g [1] [0]) && g [1] [0].equals(g [2] [0])) {
+                    return true;
+                }
+        if (!g [0] [1].equals("[ ]") && g [0] [1].equals(g [1] [1]) && g [1] [1].equals(g [2] [1])) {
+                    return true;
+                }
+        if (!g [0] [2].equals("[ ]") && g [0] [2].equals(g [1] [2]) && g [1] [2].equals(g [2] [2])) {
+                    return true;
+                }
+        if (!g [0] [0].equals("[ ]") && g [0] [0].equals(g [1] [1]) && g [1] [1].equals(g [2] [2])) {
+                    return true;
+                }
+        if (!g [2] [0].equals("[ ]") && g [2] [0].equals(g [1] [1]) && g [1] [1].equals(g [0] [2])) {
+                    return true;
+                }
+        return false;
     }
     public static int getRow (String input) {
         int y;
