@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Prime
+comment1.params=n
+comment1.target=java.util.ArrayList\ bigPrime(int)
+comment2.params=y
+comment2.target=java.lang.String\ nums(int)
+numComments=3
