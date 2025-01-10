@@ -31,8 +31,8 @@ public class Driver {
         
         //Fraction mm = new Fraction (2, 2);
         
-        Fraction half = new Fraction(2, 5);
-        Fraction third = new Fraction (1, 10);
+        final Fraction half = new Fraction(2, 10);
+        final Fraction third = new Fraction (2, 3);
         
         System.out.println("Static Methods Testing: Multiply: ");
         Fraction product = Fraction.multiply(half, third);
@@ -45,7 +45,7 @@ public class Driver {
         System.out.println(quotient);
         
         System.out.println("");
-        
+     
         System.out.println("Static Methods Testing: Add: "); 
         Fraction sum = Fraction.add(half, third);
         System.out.println(sum);
@@ -56,4 +56,5 @@ public class Driver {
         Fraction diff = Fraction.subtract(half, third);
         System.out.println(diff);
     }
+    
 }

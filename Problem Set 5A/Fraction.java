@@ -59,9 +59,16 @@ public class Fraction {
         }
     }
     public void reduce() {
+        int n = GCF();
+        Numerator = Numerator/n;
+        Denominator = Denominator/n;
+    }
+    
+    //Helper Method?
+    private int GCF () {
         int GCF = 1;
-        int n = Numerator;
-        int d = Denominator;
+        int n = getNum();
+        int d = getDenom();
         while (n > d || d > n) {
             if (n > d) {
                 n = n - d;
@@ -70,10 +77,8 @@ public class Fraction {
                 d = d - n;
             }
         }
-        
         GCF = n;
-        Numerator = Numerator/GCF;
-        Denominator = Denominator/GCF;
+        return GCF;
     }
     
     //Static Methods
@@ -81,32 +86,24 @@ public class Fraction {
         Fraction product = new Fraction();
         product.setNum(first.getNum() * second.getNum());
         product.setDenom(first.getDenom() * second.getDenom());
-        product.reduce();
         return product;
     }
     public static Fraction divide (Fraction first, Fraction second) {
         Fraction quotient = new Fraction();
         quotient.setNum(first.getNum() * second.getDenom());
         quotient.setDenom(first.getDenom() * second.getNum());
-        quotient.reduce();
         return quotient;
     }
     public static Fraction add (Fraction first, Fraction second) {
         Fraction sum = new Fraction();
-        first.setNum(first.getNum() * second.getDenom());
-        second.setNum(second.getNum() * first.getDenom());
         sum.setDenom(first.getDenom() * second.getDenom());
-        sum.setNum(first.getNum() + second.getNum());
-        sum.reduce();
+        sum.setNum((first.getNum() * second.getDenom())+ (second.getNum() * first.getDenom()));
         return sum;
     }
     public static Fraction subtract (Fraction first, Fraction second) {
         Fraction difference = new Fraction();
-        first.setNum(first.getNum() * second.getDenom());
-        second.setNum(second.getNum() * first.getDenom());
         difference.setDenom(first.getDenom() * second.getDenom());
-        difference.setNum(Math.max(first.getNum(), second.getNum()) - Math.min(first.getNum(), second.getNum()));
-        difference.reduce();
+        difference.setNum(first.getNum() * second.getDenom() - second.getNum() * first.getDenom());
         return difference; 
     }
 }
