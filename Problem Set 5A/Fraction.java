@@ -21,11 +21,15 @@ public class Fraction {
         reduce();
     }
     public Fraction (String frac) {
-        String n = frac.substring(0,frac.indexOf("/"));
-        String d = frac.substring(frac.indexOf("/") + 1, frac.length());
-        Numerator = Integer.parseInt(n);
-        Denominator = Integer.parseInt(d);
-        String Fraction = Numerator + "/" + Denominator;
+        if (frac.indexOf("/") <= 0) {
+             System.out.println("Please enter a fraction in the correct formatting");
+        } else {
+            String n = frac.substring(0,frac.indexOf("/"));
+            String d = frac.substring(frac.indexOf("/") + 1, frac.length());
+            Numerator = Integer.parseInt(n);
+            Denominator = Integer.parseInt(d);
+            String Fraction = Numerator + "/" + Denominator;
+        }
     }
     public Fraction (Fraction frac) {
         Numerator = frac.Numerator;
@@ -86,24 +90,28 @@ public class Fraction {
         Fraction product = new Fraction();
         product.setNum(first.getNum() * second.getNum());
         product.setDenom(first.getDenom() * second.getDenom());
+        product.reduce();
         return product;
     }
     public static Fraction divide (Fraction first, Fraction second) {
         Fraction quotient = new Fraction();
         quotient.setNum(first.getNum() * second.getDenom());
         quotient.setDenom(first.getDenom() * second.getNum());
+        quotient.reduce();
         return quotient;
     }
     public static Fraction add (Fraction first, Fraction second) {
         Fraction sum = new Fraction();
         sum.setDenom(first.getDenom() * second.getDenom());
         sum.setNum((first.getNum() * second.getDenom())+ (second.getNum() * first.getDenom()));
+        sum.reduce();
         return sum;
     }
     public static Fraction subtract (Fraction first, Fraction second) {
         Fraction difference = new Fraction();
         difference.setDenom(first.getDenom() * second.getDenom());
         difference.setNum(first.getNum() * second.getDenom() - second.getNum() * first.getDenom());
+        //difference.reduce();
         return difference; 
     }
 }

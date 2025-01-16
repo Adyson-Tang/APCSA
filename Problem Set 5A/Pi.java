@@ -11,6 +11,6 @@ public class Pi {
                 approx.setDenom(approx.getDenom() + 1);
             }
         }
-        System.out.println(approx);
+        System.out.println("The next closest fraction to PI is : " + approx);
     }
 }

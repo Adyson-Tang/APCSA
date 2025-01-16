@@ -31,8 +31,8 @@ public class Driver {
         
         //Fraction mm = new Fraction (2, 2);
         
-        final Fraction half = new Fraction(2, 10);
-        final Fraction third = new Fraction (2, 3);
+        final Fraction half = new Fraction();
+        final Fraction third = new Fraction ();
         
         System.out.println("Static Methods Testing: Multiply: ");
         Fraction product = Fraction.multiply(half, third);
